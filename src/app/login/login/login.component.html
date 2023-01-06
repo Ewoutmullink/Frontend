@@ -1,0 +1,14 @@
+<div>
+    <label for="name">
+      Gebruikersnaam
+    </label>
+    <input id="name" type="text" [(ngModel)]="loginDataSource.auth.username">
+  </div>
+
+  <div>
+    <label for="address">
+      Wachtwoord
+    </label>
+    <input id="address" type="text" [(ngModel)]="loginDataSource.auth.password">
+  </div>
+  <button class="button" type="submit" (click)="onClickLogin()">Login</button>

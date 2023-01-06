@@ -1,0 +1,41 @@
+<div>
+  <label for="name">
+    Gebruikersnaam
+  </label>
+  <input id="name" type="text" [(ngModel)]="registerDataSource.userRegister.username">
+</div>
+
+<div>
+  <label for="password">
+    Wachtwoord
+  </label>
+  <input id="password" type="password" [(ngModel)]="registerDataSource.userRegister.password">
+</div>
+<div>
+  <label for="straat">
+    Straat
+  </label>
+  <input id="straat" type="text" [(ngModel)]="registerDataSource.userRegister.street">
+</div>
+<div>
+  <label for="huisnummer">
+    Huisnummer
+  </label>
+  <input id="huisnummer" type="text" [(ngModel)]="registerDataSource.userRegister.number">
+</div>
+<div>
+  <label for="plaats">
+    Plaats
+  </label>
+  <input id="plaats" type="text" [(ngModel)]="registerDataSource.userRegister.place">
+</div>
+<div>
+  <label for="postcode">
+    Postcode
+  </label>
+  <input id="postcode" type="text" [(ngModel)]="registerDataSource.userRegister.zip">
+</div>
+<div>
+  <p *ngIf="booleanEmpty">Geen legen velden</p>
+</div>
+<button class="button" type="submit" (click)="register()">Register</button>

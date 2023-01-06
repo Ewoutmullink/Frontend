@@ -1,0 +1,8 @@
+<ul>
+  <li><a *ngIf="loginDataSource.notLoggedIn()" routerLink="/login">Inloggen</a></li>
+  <li><a *ngIf="loginDataSource.notLoggedIn()" routerLink="/register">Registeren</a></li>
+  <li><a *ngIf="loginDataSource.isAdmin()" routerLink="/admin">Admin Paneel</a></li>
+  <li><a *ngIf="loginDataSource.loggedIn()" (click)="logout()" routerLink="/">Uitloggen</a></li>
+  <li><a routerLink="/">Home</a></li>
+  <li style="float:right"><a routerLink="/cart">Winkelwagen</a></li>
+</ul>

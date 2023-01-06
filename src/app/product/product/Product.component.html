@@ -1,0 +1,7 @@
+<div *ngFor="let product of productDataSource.productList" class="card">
+  <img src="{{product.pictureUrl}}" style="width:100%">
+  <h1>{{product.name}}</h1>
+  <p class="price">€{{product.price}}.-</p>
+  <p>{{product.description}}</p>
+  <p><button (click)="addProduct(product.id)">Add to Cart</button></p>
+</div>
