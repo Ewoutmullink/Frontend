@@ -19,36 +19,21 @@ h3{
 }
 p{
   font-size: .7em;
-  color: #666;
+  color: #ffffff;
   line-height: 1.2em;
 }
 
-#top, #mid,#bot{ /* Targets all id with 'col-' */
-  border-bottom: 1px solid #EEE;
+#top, #mid,#bot{
+  border-bottom: 1px solid #082342;
 }
 
 #top{min-height: 100px;}
 #mid{min-height: 80px;}
 #bot{ min-height: 50px;}
 
-#top .logo{
-//float: left;
-  height: 60px;
-  width: 60px;
-  background: url(http://michaeltruong.ca/images/logo1.png) no-repeat;
-  background-size: 60px 60px;
-}
-.clientlogo{
-  float: left;
-  height: 60px;
-  width: 60px;
-  background: url(http://michaeltruong.ca/images/client.jpg) no-repeat;
-  background-size: 60px 60px;
-  border-radius: 50px;
-}
 .info{
   display: block;
-//float:left;
+  float:left;
   margin-left: 0;
 }
 .title{
@@ -60,15 +45,15 @@ table{
   border-collapse: collapse;
 }
 td{
-//padding: 5px 0 5px 15px;
-//border: 1px solid #EEE
+  padding: 5px 0 5px 15px;
+  border: 1px solid #142941
 }
 .tabletitle{
-//padding: 5px;
+  padding: 5px;
   font-size: .5em;
-  background: #EEE;
+  background: #112f49;
 }
-.service{border-bottom: 1px solid #EEE;}
+.service{border-bottom: 1px solid #082342;}
 .item{width: 24mm;}
 .itemtext{font-size: .5em;}
 
@@ -77,3 +62,17 @@ td{
 }
 
 textarea, input { outline: none; }
+
+.inputField{
+  max-width: 150px;
+}
+
+.center{
+  margin-left: 30%;
+}
+.mb-3{
+  max-width: 500px;
+  margin: auto;
+  width: 50%;
+  margin-top: 10px;
+}

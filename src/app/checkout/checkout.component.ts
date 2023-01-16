@@ -16,6 +16,7 @@ export class CheckoutComponent implements OnInit {
   public checkoutDataSource = CheckoutDataSource.getInstance();
   public loginDataSource = LoginDataSource.getInstance();
   public productDataSource = ProductDataSource.getInstance();
+  public item = { color: 'dark' };
   constructor(private router: Router, private checkoutService: CheckoutService) { }
   ngOnInit(): void {
     this.checkoutService.getCartOfUser(this.loginDataSource.user?.id!).subscribe((response) => {
@@ -35,12 +36,12 @@ export class CheckoutComponent implements OnInit {
   }
 
   order(): void{
-  //   this.checkoutService.resetCart(this.loginDataSource.user.username).subscribe((response) => {
-  //
-  //     },
-  //     (error: any) => {
-  //       console.error('An error occurred, ', error);
-  //     });
-  //   this.router.navigate(['']);
+    this.checkoutService.resetCart(this.loginDataSource.user?.username!).subscribe((response) => {
+
+      },
+      (error: any) => {
+        console.error('An error occurred, ', error);
+      });
+    this.router.navigate(['']);
   }
 }

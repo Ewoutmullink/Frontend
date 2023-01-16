@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  public item = { color: 'dark' };
   public registerDataSource = RegisterDatasource.getInstance();
   public booleanEmpty = false;
   constructor(private registerService: RegisterService, private router: Router) { }

@@ -1,41 +1,62 @@
-<div>
-  <label for="name">
-    Gebruikersnaam
-  </label>
-  <input id="name" type="text" [(ngModel)]="registerDataSource.userRegister.username">
-</div>
+<c-card [color]="item.color"
+        [textColor]="item.color === 'warning' || item.color === 'light' ? '' :  'white'"
+        class="mb-3">
+  <c-card-header>Registreer</c-card-header>
+  <c-card-body class="bg-gradient">
+    <form cForm>
+      <div class="mb-3">
+        <label cLabel for="inputName">Gebruikersnaam</label>
+        <input  id="name" name="name" class="form-control"
+                required minlength="6"
+                #name="ngModel" cFormControl id="inputName" type="text" [(ngModel)]="registerDataSource.userRegister.username" [ngModelOptions]="{standalone: true}" >
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+             class="alert">
 
-<div>
-  <label for="password">
-    Wachtwoord
-  </label>
-  <input id="password" type="password" [(ngModel)]="registerDataSource.userRegister.password">
-</div>
-<div>
-  <label for="straat">
-    Straat
-  </label>
-  <input id="straat" type="text" [(ngModel)]="registerDataSource.userRegister.street">
-</div>
-<div>
-  <label for="huisnummer">
-    Huisnummer
-  </label>
-  <input id="huisnummer" type="text" [(ngModel)]="registerDataSource.userRegister.number">
-</div>
-<div>
-  <label for="plaats">
-    Plaats
-  </label>
-  <input id="plaats" type="text" [(ngModel)]="registerDataSource.userRegister.place">
-</div>
-<div>
-  <label for="postcode">
-    Postcode
-  </label>
-  <input id="postcode" type="text" [(ngModel)]="registerDataSource.userRegister.zip">
-</div>
-<div>
-  <p *ngIf="booleanEmpty">Geen legen velden</p>
-</div>
-<button class="button" type="submit" (click)="register()">Register</button>
+          <div *ngIf="name.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="name.errors?.['minlength']">
+            Name must be at least 6 characters long.
+          </div>
+
+        </div>
+      </div>
+      <div class="mb-3">
+        <label cLabel for="inputPassword-1">Wachtwoord</label>
+        <input id="password" name="password" class="form-control"
+               required minlength="6"
+               #password="ngModel" cFormControl id="inputPassword-1" type="password" [(ngModel)]="registerDataSource.userRegister.password" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+             class="alert">
+
+          <div *ngIf="password.errors?.['required']">
+            Password is required.
+          </div>
+          <div *ngIf="password.errors?.['minlength']">
+            Password must be at least 6 characters long.
+          </div>
+
+        </div>
+      </div>
+      <div class="mb-3">
+        <label cLabel for="inputPassword-1">Straat</label>
+        <input class="inputField" cFormControl id="inputStreet" type="text" [(ngModel)]="registerDataSource.userRegister.street" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="mb-3">
+        <label cLabel for="inputPassword-1">Huisnummer</label>
+        <input class="inputField" cFormControl id="inputNumber" type="text" [(ngModel)]="registerDataSource.userRegister.number" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="mb-3">
+        <label cLabel for="inputPassword-1">Plaats</label>
+        <input class="inputField" cFormControl id="inputPlace" type="text" [(ngModel)]="registerDataSource.userRegister.place" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="mb-3">
+        <label cLabel for="inputPassword-1">Postcode</label>
+        <input class="inputField" cFormControl id="inputZip" type="text" [(ngModel)]="registerDataSource.userRegister.zip" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="center">
+        <button (click)="register()" [color]="item.color" cButton class="shadow">Registreer</button>
+      </div>
+    </form>
+  </c-card-body>
+</c-card>
