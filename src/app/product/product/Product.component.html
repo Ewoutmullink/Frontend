@@ -1,7 +1,12 @@
-<div *ngFor="let product of productDataSource.productList" class="card">
+<c-card *ngFor="let product of productDataSource.productList" [color]="item.color"
+        [textColor]="item.color === 'warning' || item.color === 'light' ? '' :  'white'"
+        class="mb-3">
   <img src="{{product.pictureUrl}}" style="width:100%">
-  <h1>{{product.name}}</h1>
-  <p class="price">€{{product.price}}.-</p>
-  <p>{{product.description}}</p>
-  <p><button (click)="addProduct(product.id)">Add to Cart</button></p>
-</div>
+  <c-card-header>€{{product.price}}.-</c-card-header>
+  <c-card-body class="bg-gradient">
+    <p>{{product.name}}</p>
+    <p>{{product.description}}</p>
+    <button (click)="addProduct(product.id)" [color]="item.color" cButton class="shadow">Voeg toe</button>
+  </c-card-body>
+</c-card>
+

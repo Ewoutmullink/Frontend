@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) { }
 
+  public item = { color: 'dark' };
   ngOnInit(): void {
 
   }

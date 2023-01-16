@@ -20,7 +20,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { CheckDialogComponent } from './admin/check-dialog/check-dialog.component';
 import {HttpService} from "./service/HttpService";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ButtonModule, FormModule} from "@coreui/angular";
+import {ButtonModule, CardModule, FormModule} from "@coreui/angular";
 
 @NgModule({
   declarations: [
@@ -45,6 +45,7 @@ import {ButtonModule, FormModule} from "@coreui/angular";
     BrowserAnimationsModule,
     FormModule,
     ButtonModule,
+    CardModule,
   ],
   providers: [
     RegisterService,

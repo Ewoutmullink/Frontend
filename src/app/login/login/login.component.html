@@ -1,14 +1,22 @@
-<form cForm>
-  <div class="mb-3">
-    <label cLabel for="inputEmail-1">Gebruikersnaam</label>
-    <input cFormControl id="inputEmail-1" type="email" [(ngModel)]="loginDataSource.auth.username" [ngModelOptions]="{standalone: true}" >
-    <div cFormText>
-      We'll never share your email with anyone else
-    </div>
-  </div>
-  <div class="mb-3">
-    <label cLabel for="inputPassword-1">Wachtwoord</label>
-    <input cFormControl id="inputPassword-1" type="password" [(ngModel)]="loginDataSource.auth.password" [ngModelOptions]="{standalone: true}">
-  </div>
-  <input cButton color="primary" type="submit" (click)="onClickLogin()">
-</form>
+
+
+<c-card [color]="item.color"
+        [textColor]="item.color === 'warning' || item.color === 'light' ? '' :  'white'"
+        class="mb-3">
+  <c-card-header>Login</c-card-header>
+  <c-card-body class="bg-gradient">
+    <form cForm>
+      <div class="mb-3">
+        <label cLabel for="inputEmail-1">Gebruikersnaam</label>
+        <input class="inputField" cFormControl id="inputEmail-1" type="email" [(ngModel)]="loginDataSource.auth.username" [ngModelOptions]="{standalone: true}" >
+      </div>
+      <div class="mb-3">
+        <label cLabel for="inputPassword-1">Wachtwoord</label>
+        <input class="inputField" cFormControl id="inputPassword-1" type="password" [(ngModel)]="loginDataSource.auth.password" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="center">
+      <button (click)="onClickLogin()" [color]="item.color" cButton class="shadow">Log in</button>
+      </div>
+    </form>
+  </c-card-body>
+</c-card>

@@ -10,7 +10,7 @@ import {LoginDataSource} from '../../login/login/loginDataSource';
   styleUrls: ['./Product.component.css']
 })
 export class ProductComponent implements OnInit {
-
+  public item = { color: 'dark' };
   public productDataSource = ProductDataSource.getInstance();
   private loginDataSource = LoginDataSource.getInstance();
 

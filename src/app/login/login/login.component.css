@@ -1,1 +1,13 @@
+.inputField{
+  max-width: 150px;
+}
 
+.center{
+   margin-left: 30%;
+}
+.mb-3{
+  max-width: 500px;
+  margin: auto;
+  width: 50%;
+  margin-top: 10px;
+}
