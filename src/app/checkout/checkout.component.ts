@@ -18,13 +18,13 @@ export class CheckoutComponent implements OnInit {
   public productDataSource = ProductDataSource.getInstance();
   constructor(private router: Router, private checkoutService: CheckoutService) { }
   ngOnInit(): void {
-    // this.checkoutService.getCartOfUser(this.loginDataSource.user.username).subscribe((response) => {
-    //     this.checkoutDataSource.productList = response.products;
-    //   },
-    //   (error) => {
-    //     console.error('An error occurred, ', error);
-    //   });
-    // this.total();
+    this.checkoutService.getCartOfUser(this.loginDataSource.user?.id!).subscribe((response) => {
+        this.checkoutDataSource.productList = response.products;
+      },
+      (error) => {
+        console.error('An error occurred, ', error);
+      });
+    this.total();
   }
 
   total(): void{

@@ -5,7 +5,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class HttpService {
 
-  private apiUrl = 'http://localhost:8080/api';
+  private apiUrl = 'http://142.93.134.8:8080/api';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

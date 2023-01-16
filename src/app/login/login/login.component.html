@@ -1,14 +1,14 @@
-<div>
-    <label for="name">
-      Gebruikersnaam
-    </label>
-    <input id="name" type="text" [(ngModel)]="loginDataSource.auth.username">
+<form cForm>
+  <div class="mb-3">
+    <label cLabel for="inputEmail-1">Gebruikersnaam</label>
+    <input cFormControl id="inputEmail-1" type="email" [(ngModel)]="loginDataSource.auth.username" [ngModelOptions]="{standalone: true}" >
+    <div cFormText>
+      We'll never share your email with anyone else
+    </div>
   </div>
-
-  <div>
-    <label for="address">
-      Wachtwoord
-    </label>
-    <input id="address" type="text" [(ngModel)]="loginDataSource.auth.password">
+  <div class="mb-3">
+    <label cLabel for="inputPassword-1">Wachtwoord</label>
+    <input cFormControl id="inputPassword-1" type="password" [(ngModel)]="loginDataSource.auth.password" [ngModelOptions]="{standalone: true}">
   </div>
-  <button class="button" type="submit" (click)="onClickLogin()">Login</button>
+  <input cButton color="primary" type="submit" (click)="onClickLogin()">
+</form>

@@ -25,22 +25,29 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@coreui/coreui/dist/css/coreui.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@coreui/coreui/dist/js/coreui.min.js"
+            ]
           },
+
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "950kb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "950kb",
+                  "maximumError": "950kb"
                 }
               ],
               "outputHashing": "all"

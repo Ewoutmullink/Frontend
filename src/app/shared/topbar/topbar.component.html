@@ -1,8 +1,8 @@
-<ul>
-  <li><a *ngIf="loginDataSource.notLoggedIn()" routerLink="/login">Inloggen</a></li>
-  <li><a *ngIf="loginDataSource.notLoggedIn()" routerLink="/register">Registeren</a></li>
-  <li><a *ngIf="loginDataSource.isAdmin()" routerLink="/admin">Admin Paneel</a></li>
-  <li><a *ngIf="loginDataSource.loggedIn()" (click)="logout()" routerLink="/">Uitloggen</a></li>
-  <li><a routerLink="/">Home</a></li>
-  <li style="float:right"><a routerLink="/cart">Winkelwagen</a></li>
-</ul>
+<div class="topnav">
+  <a *ngIf="loginDataSource.notLoggedIn()" routerLink="/login">Inloggen</a>
+  <a *ngIf="loginDataSource.notLoggedIn()" routerLink="/register">Registeren</a>
+  <a *ngIf="loginDataSource.isAdmin()" routerLink="/admin">Admin Paneel</a>
+  <a *ngIf="loginDataSource.loggedIn()" (click)="logout()" routerLink="/">Uitloggen</a>
+  <a routerLink="/">Home</a>
+  <a style="float:right" routerLink="/cart">Winkelwagen</a>
+</div>
