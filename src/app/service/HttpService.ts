@@ -7,7 +7,7 @@ export class HttpService {
 
   private apiUrl = 'http://142.93.134.8:8080/api';
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
   constructor(private http: HttpClient){

@@ -30,7 +30,7 @@
 
             <tr *ngFor="let product of checkoutDataSource.productList" class="service">
               <td class="tableitem"><p class="itemtext">{{product.name}}</p></td>
-              <td class="tableitem"><input class="itemtext" id="quantity" type="text"></td>
+              <td class="tableitem"><input class="itemtext" id="quantity" type="number"><button (click)="deleteProduct(product.id)" class="closeButton">Verwijder</button></td>
               <td class="tableitem"><p class="itemtext">${{product.price}}.-</p></td>
             </tr>
 

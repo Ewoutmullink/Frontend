@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   public item = { color: 'dark' };
   public registerDataSource = RegisterDatasource.getInstance();
-  public booleanEmpty = false;
+  public booleanClicked = false;
   constructor(private registerService: RegisterService, private router: Router) { }
 
   ngOnInit(): void {
@@ -34,7 +34,10 @@ export class RegisterComponent implements OnInit {
       });
     this.router.navigate(['']);
   }else{
-      this.booleanEmpty = true;
     }
   }
+
+  clickedNotReady() {
+    this.booleanClicked = true;
   }
+}

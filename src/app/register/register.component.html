@@ -9,7 +9,7 @@
         <input  id="name" name="name" class="form-control"
                 required minlength="6"
                 #name="ngModel" cFormControl id="inputName" type="text" [(ngModel)]="registerDataSource.userRegister.username" [ngModelOptions]="{standalone: true}" >
-        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+        <div *ngIf="name.invalid && (name.dirty || name.touched || booleanClicked)"
              class="alert">
 
           <div *ngIf="name.errors?.['required']">
@@ -26,7 +26,7 @@
         <input id="password" name="password" class="form-control"
                required minlength="6"
                #password="ngModel" cFormControl id="inputPassword-1" type="password" [(ngModel)]="registerDataSource.userRegister.password" [ngModelOptions]="{standalone: true}">
-        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+        <div *ngIf="password.invalid && (password.dirty || password.touched || booleanClicked)"
              class="alert">
 
           <div *ngIf="password.errors?.['required']">
@@ -40,22 +40,67 @@
       </div>
       <div class="mb-3">
         <label cLabel for="inputPassword-1">Straat</label>
-        <input class="inputField" cFormControl id="inputStreet" type="text" [(ngModel)]="registerDataSource.userRegister.street" [ngModelOptions]="{standalone: true}">
+        <input class="form-control"
+               required minlength="1"
+               #straat="ngModel"  class="inputField" cFormControl id="inputStreet" type="text" [(ngModel)]="registerDataSource.userRegister.street" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="straat.invalid && (straat.dirty || straat.touched || booleanClicked)"
+             class="alert">
+
+          <div *ngIf="straat.errors?.['required']">
+            Straat is required.
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label cLabel for="inputPassword-1">Huisnummer</label>
-        <input class="inputField" cFormControl id="inputNumber" type="text" [(ngModel)]="registerDataSource.userRegister.number" [ngModelOptions]="{standalone: true}">
+        <input class="form-control"
+               required minlength="1"
+               #nummer="ngModel" class="inputField" cFormControl id="inputNumber" type="text" [(ngModel)]="registerDataSource.userRegister.number" [ngModelOptions]="{standalone: true}"
+        >
+        <div *ngIf="nummer.invalid && (nummer.dirty || nummer.touched || booleanClicked)"
+             class="alert">
+
+          <div *ngIf="nummer.errors?.['required']">
+            Huisnummer is required.
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label cLabel for="inputPassword-1">Plaats</label>
-        <input class="inputField" cFormControl id="inputPlace" type="text" [(ngModel)]="registerDataSource.userRegister.place" [ngModelOptions]="{standalone: true}">
+        <input class="form-control"
+               required minlength="1"
+               #plaats="ngModel"  class="inputField" cFormControl id="inputPlace" type="text" [(ngModel)]="registerDataSource.userRegister.place" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="plaats.invalid && (plaats.dirty || plaats.touched || booleanClicked)"
+             class="alert">
+
+          <div *ngIf="plaats.errors?.['required']">
+            Plaats is verplicht.
+          </div>
+        </div>
       </div>
       <div class="mb-3">
         <label cLabel for="inputPassword-1">Postcode</label>
-        <input class="inputField" cFormControl id="inputZip" type="text" [(ngModel)]="registerDataSource.userRegister.zip" [ngModelOptions]="{standalone: true}">
+        <input class="form-control"
+               required minlength="6"
+               #postcode="ngModel"  class="inputField" cFormControl id="inputZip" type="text" [(ngModel)]="registerDataSource.userRegister.zip" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="postcode.invalid && (postcode.dirty || postcode.touched || booleanClicked)"
+             class="alert">
+
+          <div *ngIf="postcode.errors?.['required']">
+            Postcode is verplicht
+          </div>
+          <div *ngIf="postcode.errors?.['minlength']">
+            Postcode moet minmaal 6 caracters lang zijn.
+          </div>
+        </div>
       </div>
       <div class="center">
+        <div *ngIf="nummer.valid && postcode.valid && straat.valid && plaats.valid && name.valid && password.valid">
         <button (click)="register()" [color]="item.color" cButton class="shadow">Registreer</button>
+        </div>
+        <div *ngIf="nummer.invalid || postcode.invalid || straat.invalid || plaats.invalid || name.invalid || password.invalid">
+          <button (click)="clickedNotReady()" [color]="item.color" cButton class="shadow">Registreer</button>
+        </div>
       </div>
     </form>
   </c-card-body>

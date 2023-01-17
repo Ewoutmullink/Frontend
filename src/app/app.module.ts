@@ -21,6 +21,7 @@ import { CheckDialogComponent } from './admin/check-dialog/check-dialog.componen
 import {HttpService} from "./service/HttpService";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ButtonModule, CardModule, FormModule} from "@coreui/angular";
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {ButtonModule, CardModule, FormModule} from "@coreui/angular";
     BrowserAnimationsModule,
     FormModule,
     ButtonModule,
+    ToastrModule.forRoot(),
     CardModule,
   ],
   providers: [

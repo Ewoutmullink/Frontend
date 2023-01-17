@@ -3,6 +3,7 @@ import {ProductDataSource} from './ProductDataSource';
 import {ProductService} from './product.service';
 import {AddProduct} from './addProduct';
 import {LoginDataSource} from '../../login/login/loginDataSource';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +15,7 @@ export class ProductComponent implements OnInit {
   public productDataSource = ProductDataSource.getInstance();
   private loginDataSource = LoginDataSource.getInstance();
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -28,7 +29,9 @@ export class ProductComponent implements OnInit {
   }
 
   addProduct(id: number): void {
-    console.log(id);
+    if(this.loginDataSource.loggedIn()){
+      this.toastr.success('Het product is toegevoegd in je mandje!', 'Succes');
+    }
     const add = new AddProduct(this.loginDataSource.user!.id, id);
     this.productService.addProduct(add).subscribe((response) => {
       },
