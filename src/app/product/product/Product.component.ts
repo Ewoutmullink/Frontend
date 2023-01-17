@@ -32,6 +32,9 @@ export class ProductComponent implements OnInit {
     if(this.loginDataSource.loggedIn()){
       this.toastr.success('Het product is toegevoegd in je mandje!', 'Succes');
     }
+    if(this.loginDataSource.notLoggedIn()){
+      this.toastr.warning('Je bent niet ingelogd!', 'Waarschuwing');
+    }
     const add = new AddProduct(this.loginDataSource.user!.id, id);
     this.productService.addProduct(add).subscribe((response) => {
       },
