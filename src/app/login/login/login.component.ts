@@ -14,20 +14,18 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router) { }
 
-  public item = { color: 'dark' };
+  public item = { color: 'light' };
   ngOnInit(): void {
 
   }
 
   onClickLogin(): void{
     this.loginService.login().subscribe((response) => {
-       console.log(response)
+
         if (response.username === this.loginDataSource.auth.username){
           this.loginDataSource.user = response;
-          console.log(this.loginDataSource.user);
           this.router.navigate(['']);
         }else{
-          console.log('no');
         }
       },
       (error: any) => {

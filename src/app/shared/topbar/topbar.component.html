@@ -1,8 +1,31 @@
-<div class="topnav">
-  <a *ngIf="loginDataSource.notLoggedIn()" routerLink="/login">Inloggen</a>
-  <a *ngIf="loginDataSource.notLoggedIn()" routerLink="/register">Registeren</a>
-  <a *ngIf="loginDataSource.isAdmin()" routerLink="/admin">Admin Paneel</a>
-  <a *ngIf="loginDataSource.loggedIn()" (click)="logout()" routerLink="/">Uitloggen</a>
-  <a routerLink="/">Home</a>
-  <a style="float:right" routerLink="/cart">Winkelwagen</a>
-</div>
+<c-header class="topnav">
+  <c-container fluid >
+    <c-header-brand>Hidden Treasures</c-header-brand>
+    <c-header-nav class="ms-auto">
+      <c-nav-item>
+        <a [active]="true" routerLink="/" cNavLink>Home</a>
+      </c-nav-item>
+      <c-nav-item>
+        <a cNavLink *ngIf="loginDataSource.notLoggedIn()" routerLink="/login">Login</a>
+      </c-nav-item>
+      <c-nav-item>
+        <a cNavLink *ngIf="loginDataSource.notLoggedIn()" routerLink="/register">Register</a>
+      </c-nav-item>
+      <c-nav-item>
+        <a cNavLink *ngIf="loginDataSource.isAdmin()" routerLink="/admin">Admin Paneel</a>
+      </c-nav-item>
+      <c-nav-item>
+        <a cNavLink *ngIf="loginDataSource.loggedIn()" (click)="logout()" routerLink="/">Uitloggen</a>
+      </c-nav-item>
+      <c-nav-item>
+        <div style="float: right" routerLink="/cart" class="cart-icon">
+          <i class="fas fa-shopping-cart cartIcon"></i>
+          <span class="counter">0</span>
+        </div>
+      </c-nav-item>
+      <c-nav-item>
+        <a cNavLink routerLink="/cart">Winkelwagen</a>
+      </c-nav-item>
+    </c-header-nav>
+  </c-container>
+</c-header>

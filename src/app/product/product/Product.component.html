@@ -1,12 +1,18 @@
-<c-card *ngFor="let product of productDataSource.productList" [color]="item.color"
+<div class="sidebar" style="padding-top: 60px">
+  <h3>Sidebar</h3>
+  <input cFormControl type="text" placeholder="Zoek op naam.." [(ngModel)]="searchTerm">
+</div>
+<div style="display: flex; flex-wrap: wrap; padding-top: 90px; padding-left: 280px">
+<c-card *ngFor="let product of productDataSource.productList | searchFilter:searchTerm" [color]="item.color"
         [textColor]="item.color === 'warning' || item.color === 'light' ? '' :  'white'"
-        class="mb-3">
+        class="mb-3" style="width: 30%; margin: 10px;"
+        [routerLink]="['/product', product.id]">
   <img src="{{product.pictureUrl}}" style="width:100%">
   <c-card-header>€{{product.price}}.-</c-card-header>
   <c-card-body class="bg-gradient">
     <p>{{product.name}}</p>
     <p>{{product.description}}</p>
-    <button (click)="addProduct(product.id)" [color]="item.color" cButton class="shadow">Voeg toe</button>
+    <button [color]="item.color" cButton class="shadow">Bekijk product</button>
   </c-card-body>
 </c-card>
-
+</div>

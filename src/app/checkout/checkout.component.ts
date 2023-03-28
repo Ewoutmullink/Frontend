@@ -17,16 +17,18 @@ export class CheckoutComponent implements OnInit {
   public checkoutDataSource = CheckoutDataSource.getInstance();
   public loginDataSource = LoginDataSource.getInstance();
   public productDataSource = ProductDataSource.getInstance();
-  public item = { color: 'dark' };
+  public item = { color: 'light' };
+
   constructor(private router: Router, private checkoutService: CheckoutService, private toastr: ToastrService) { }
+
   ngOnInit(): void {
     this.checkoutService.getCartOfUser(this.loginDataSource.user?.id!).subscribe((response) => {
         this.checkoutDataSource.productList = response.products;
+        this.total();
       },
       (error) => {
         console.error('An error occurred, ', error);
       });
-    this.total();
   }
 
   total(): void{
@@ -37,6 +39,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   order(): void{
+    this.checkoutService.createOrder(this.checkoutDataSource.productList).subscribe((response) => {
+      },
+      (error: any) => {
+        console.error('An error occurred, ', error);
+      });
     this.checkoutDataSource.productList.forEach(product => {
       this.checkoutService.deleteProduct(this.loginDataSource.user?.id!, product.id).subscribe((response) => {
         },

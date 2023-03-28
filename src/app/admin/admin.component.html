@@ -1,8 +1,63 @@
-<div *ngFor="let product of productDataSource.productList" class="card">
+<c-card *ngFor="let product of productDataSource.productList" [color]="item.color"
+        [textColor]="item.color === 'warning' || item.color === 'light' ? '' :  'white'"
+        class="mb-3" >
   <img src="{{product.pictureUrl}}" style="width:100%">
-  <h1>{{product.name}}</h1>
-  <p class="price">€{{product.price}}.-</p>
-  <p>{{product.description}}</p>
-  <div><p><button (click)="delete(product.id)">Verwijder</button></p>
-  <p><button (click)="change(product.id)">Pas aan</button></p></div>
-</div>
+  <c-card-header>€{{product.price}}.-</c-card-header>
+  <c-card-body class="bg-gradient">
+    <p>{{product.name}}</p>
+    <p>{{product.description}}</p>
+    <div><p><button (click)="deleteProduct(product.id)">Verwijder</button></p>
+      <p><button (click)="openChangeDialog(product.id)">Pas aan</button></p></div>
+  </c-card-body>
+</c-card>
+
+<div><p><button (click)="openChangeDialog(-1)">VoegToe</button></p></div>
+
+
+<c-modal id="exampleModal" [visible]="visibleEditDialog" (visibleChange)="handleLiveChangeEdit($event)">
+  <c-modal-header>
+    <h5 cModalTitle>Check</h5>
+    <button (click)="toggleVisableEdit()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <c-card [color]="item.color"
+            [textColor]="item.color === 'warning' || item.color === 'light' ? '' :  'white'"
+            class="mb-3">
+      <c-card-body class="bg-gradient">
+        <form cForm>
+          <div class="mb-3">
+            <label cLabel for="name">Naam</label>
+            <input  id="name" name="name" class="form-control"
+                     cFormControl type="text" [(ngModel)]="product.name" [ngModelOptions]="{standalone: true}" >
+
+          </div>
+          <div class="mb-3">
+            <label cLabel for="discriprion">Discriptie</label>
+            <input  id="discriprion" name="name" class="form-control"
+                     cFormControl type="text" [(ngModel)]="product.description" [ngModelOptions]="{standalone: true}" >
+
+          </div>
+          <div class="mb-3">
+            <label cLabel for="url">Url</label>
+            <input  id="url" name="name" class="form-control"
+                     cFormControl type="text" [(ngModel)]="product.pictureUrl" [ngModelOptions]="{standalone: true}" >
+
+          </div>
+          <div class="mb-3">
+            <label cLabel for="url">Price</label>
+            <input  id="price" name="name" class="form-control"
+                     cFormControl type="text" [(ngModel)]="product.price" [ngModelOptions]="{standalone: true}" >
+          </div>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-modal-body>
+  <c-modal-footer>
+    <button (click)="toggleVisableEdit()" cButton color="secondary">
+      sluit
+    </button>
+    <button *ngIf="product.id == -1" >Maak aan</button>
+    <button *ngIf="product.id != -1"(click)="editProduct()" cButton color="primary">Pas aan</button>
+  </c-modal-footer>
+</c-modal>
+

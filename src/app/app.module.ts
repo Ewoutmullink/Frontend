@@ -20,8 +20,21 @@ import {MatButtonModule} from "@angular/material/button";
 import { CheckDialogComponent } from './admin/check-dialog/check-dialog.component';
 import {HttpService} from "./service/HttpService";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ButtonModule, CardModule, FormModule} from "@coreui/angular";
+import {
+  ButtonModule,
+  CardModule,
+  DropdownModule,
+  FormModule,
+  GridModule,
+  HeaderModule, ImgModule,
+  ModalModule,
+  NavModule, SidebarModule
+} from "@coreui/angular";
 import { ToastrModule } from 'ngx-toastr';
+import { HomeComponent } from './home/home.component';
+import { ProductPageComponent } from './product-page/product-page.component';
+import { SearchFilterPipe } from './search-filter.pipe';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +46,11 @@ import { ToastrModule } from 'ngx-toastr';
     CheckoutComponent,
     AdminComponent,
     ProductFormComponent,
-    CheckDialogComponent
+    CheckDialogComponent,
+    HomeComponent,
+    ProductPageComponent,
+    SearchFilterPipe,
+    TermsComponent
   ],
   entryComponents: [ProductFormComponent],
   imports: [
@@ -48,6 +65,13 @@ import { ToastrModule } from 'ngx-toastr';
     ButtonModule,
     ToastrModule.forRoot(),
     CardModule,
+    ModalModule,
+    HeaderModule,
+    GridModule,
+    NavModule,
+    DropdownModule,
+    SidebarModule,
+    ImgModule,
   ],
   providers: [
     RegisterService,

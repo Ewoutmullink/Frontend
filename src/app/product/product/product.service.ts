@@ -19,9 +19,16 @@ export class ProductService {
   }
 
 
-  addProduct(add: AddProduct): Observable<any> {
+  addToCardProduct(add: AddProduct): Observable<any> {
     let product = this.productDataSource.productList.find(p => p.id == add.productId)
-    console.log(product)
     return this.httpService.post('product/card/' + add.id +'/', product);
+  }
+
+  deleteProduct(productId: number){
+    return this.httpService.delete('product', productId)
+  }
+
+  changeProduct(product: Product){
+   return this.httpService.put('product/' + product.id, product)
   }
 }

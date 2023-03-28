@@ -1,6 +1,17 @@
-<p *ngIf="loginDataSource.notLoggedIn()">Login please</p>
 
-<div *ngIf="loginDataSource.loggedIn()">
+<div *ngIf="loginDataSource.notLoggedIn()" style="padding-top: 90px">
+  <c-card [color]="item.color"
+          [textColor]="item.color === 'warning' || item.color === 'light' ? '' :  'white'"
+          class="mb-3">
+    <c-card-header>Winkelmandje</c-card-header>
+    <c-card-body class="bg-gradient">
+      <p>Log in</p>
+    </c-card-body>
+  </c-card>
+</div>
+
+
+<div *ngIf="loginDataSource.loggedIn()" style="padding-top: 90px">
 
 
 
@@ -13,9 +24,9 @@
       <div id="mid">
         <div class="info">
           <h2>Contact Info</h2>
-          <p>Address : {{loginDataSource.user?.street!}} {{loginDataSource.user?.number!}}</p>
-          <p>Place   : {{loginDataSource.user?.place!}}</p>
-          <p>Zip code   : {{loginDataSource.user?.zip!}}</p>
+          <p>Straat : {{loginDataSource.user?.street!}} {{loginDataSource.user?.number!}}</p>
+          <p>Plaats   : {{loginDataSource.user?.place!}}</p>
+          <p>Postcode   : {{loginDataSource.user?.zip!}}</p>
         </div>
       </div>
 
@@ -23,28 +34,105 @@
         <div id="table">
           <table>
             <tr class="tabletitle">
-              <td class="item"><h2>Item</h2></td>
-              <td class="Hours"><h2>Qty</h2></td>
-              <td class="Rate"><h2>Sub Total</h2></td>
+              <td class="item"><h2>Product</h2></td>
+              <td class="Hours"><h2>Verwijder</h2></td>
+              <td class="Rate"><h2>Sub Totaal</h2></td>
             </tr>
 
             <tr *ngFor="let product of checkoutDataSource.productList" class="service">
               <td class="tableitem"><p class="itemtext">{{product.name}}</p></td>
-              <td class="tableitem"><input class="itemtext" id="quantity" type="number"><button (click)="deleteProduct(product.id)" [color]="item.color" cButton class="shadow">Verwijder</button></td>
+              <td class="tableitem"><button (click)="deleteProduct(product.id)" [color]="item.color" cButton class="shadow">Verwijder</button></td>
               <td class="tableitem"><p class="itemtext">${{product.price}}.-</p></td>
             </tr>
 
             <tr class="tabletitle">
               <td></td>
-              <td class="Rate"><h2>Total</h2></td>
+              <td class="Rate"><h2>Totaal</h2></td>
               <td class="payment"><h2>${{totalAmount}}.-</h2></td>
             </tr>
-            <button (click)="order()" [color]="item.color" cButton class="shadow">Bestel</button>
           </table>
+
+          <button (click)="order()" [color]="item.color" cButton class="shadow">Bestel</button>
         </div>
       </div>
     </c-card-body>
   </c-card>
-
-
   </div>
+
+<!--
+<div class="iphone">
+  <form class="form">
+    <div>
+      <h2>Address</h2>
+
+      <div class="card">
+        <address>
+          <p>Straat : {{loginDataSource.user?.street!}} {{loginDataSource.user?.number!}}</p>
+          <p>Plaats   : {{loginDataSource.user?.place!}}</p>
+          <p>Postcode   : {{loginDataSource.user?.zip!}}</p>
+        </address>
+      </div>
+    </div>
+
+    <fieldset>
+      <legend>Betaal methode</legend>
+      <div class="form__radios">
+        <div class="form__radio">
+          <label for="visa"><img src="https://www.ideal.nl/img/logo/ideal-logo.svg" width="25" height="25" alt="">iDEAL</label>
+          <input checked id="visa" name="payment-method" type="radio" />
+        </div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Verzend methode</legend>
+      <div class="form__radios">
+        <div class="form__radio">
+          <label for="postnl"><img src="https://cdn.worldvectorlogo.com/logos/postnl-3.svg" width="25" height="25" alt="">PostNL</label>
+          <input checked id="postnl" name="send-method" type="radio" />
+        </div>
+        <div class="form__radio">
+          <label for="DHL"><img src="https://cdn.worldvectorlogo.com/logos/dhl-logo.svg" width="30" alt="">DHL</label>
+          <input checked id="DHL" name="send-method" type="radio" />
+        </div>
+      </div>
+    </fieldset>
+
+    <div>
+      <h2>Shopping Bill</h2>
+
+      <table>
+        <tbody>
+        <tr>
+          <td>Shipping fee</td>
+          <td align="right">$5.43</td>
+        </tr>
+        <tr>
+          <td>Discount 10%</td>
+          <td align="right">-$1.89</td>
+        </tr>
+        <tr>
+          <td>Price Total</td>
+          <td align="right">$84.82</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td>Total</td>
+          <td align="right">$88.36</td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div>
+      <c-form-check class="mb-3">
+        <input cFormCheckInput id="disabledFieldsetCheck-5" type="checkbox">
+        <label cFormCheckLabel for="disabledFieldsetCheck-5">Ik ga akkoord met de voorwaarden</label>
+      </c-form-check>
+      <button class="button button&#45;&#45;full" type="submit"><svg class="icon">
+        <use xlink:href="#icon-shopping-bag" />
+      </svg>Buy Now</button>
+    </div>
+  </form>
+</div>
+-->

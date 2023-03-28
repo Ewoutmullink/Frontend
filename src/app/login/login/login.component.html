@@ -1,5 +1,5 @@
 
-
+<div style="padding-top: 90px">
 <c-card [color]="item.color"
         [textColor]="item.color === 'warning' || item.color === 'light' ? '' :  'white'"
         class="mb-3">
@@ -15,8 +15,9 @@
         <input class="inputField" cFormControl id="inputPassword-1" type="password" [(ngModel)]="loginDataSource.auth.password" [ngModelOptions]="{standalone: true}">
       </div>
       <div class="center">
-      <button (click)="onClickLogin()" [color]="item.color" cButton class="shadow">Log in</button>
+      <button (click)="onClickLogin()" cButton class="shadow">Log in</button>
       </div>
     </form>
   </c-card-body>
 </c-card>
+</div>
